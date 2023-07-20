@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "portifolio-maker": {
+      "hosting": {
+        "portifolio-maker": [
+          "portifolio-maker"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "portifolio-maker"
+  }
+}

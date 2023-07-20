@@ -1,0 +1,70 @@
+<form [formGroup]="portfolioForm" (ngSubmit)="submitForm()">
+    <section id="about" class="py-5">
+      <div class="container">
+        <h2>{{portfolioForm.get('aboutTitle')?.value}}</h2>
+        <p>
+          Your name:<br>
+          <textarea formControlName="name" class="form-control"></textarea>
+        </p>
+        <p>
+          Talk about youself here:<br>
+          <textarea formControlName="aboutText" class="form-control"></textarea>
+        </p>
+      </div>
+    </section>
+  
+    <section id="projects" class="py-5 bg-light">
+      <div class="container">
+        <h2>{{portfolioForm.get('projectsTitle')?.value}}</h2>
+        <div class="row">
+          <div class="col-md-6" *ngFor="let project of projects.controls; let i = index;" formArrayName="projects">
+            <div class="card mb-4">
+              <div class="card-body" formGroupName="{{i}}">
+                <h5 class="card-title">
+                  <input type="text" formControlName="name" class="form-control">
+                </h5>
+                <p class="card-text">
+
+                  <textarea formControlName="description" class="form-control"></textarea>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+    <section id="contact" class="py-5">
+      <div class="container">
+        <!--<h2>{{portfolioForm.get('contactTitle').value}}</h2>!-->
+        <h2>Contact info</h2>
+        <p>
+          <textarea formControlName="contactText" class="form-control"></textarea>
+        </p>
+      </div>
+    </section>
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#codeModal">Submit</button>
+      <div class="modal fade" id="codeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Your website code</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              Create a file called <code>index.html</code> on your computer and paste the following code into it:<br>
+              <code>
+                {{portifolio}}
+              </code><br>
+              Then, upload this code to a static website host or web server.
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </form>
